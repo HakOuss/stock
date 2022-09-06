@@ -31,7 +31,7 @@ class TicketFixture extends TestFixture
                 'name' => 'Lorem ipsum dolor sit amet',
                 'unitprice' => 1,
                 'quantity' => 1,
-                'date' => 1662426460,
+                'date' => 1662428380,
             ],
         ];
         parent::init();
