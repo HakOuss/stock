@@ -29,7 +29,7 @@ class CorsMiddleware implements MiddlewareInterface
         //$response = $handler->handle($request);
 
         if ($request->getHeader('Origin')) {
-            $accepteddomains = ['http://localhost:3000', 'https://mtdcrm.tn/', 'https://www.mtdcrm.tn/'];
+            $accepteddomains = ['http://localhost:3000', 'https://mtdcrm.tn', 'https://www.mtdcrm.tn'];
             if (in_array($_SERVER['HTTP_HOST'], $accepteddomains)) {
                 header('Access-Control-Allow-Origin:' . $_SERVER['HTTP_HOST']);
             }
