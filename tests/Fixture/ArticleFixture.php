@@ -25,11 +25,11 @@ class ArticleFixture extends TestFixture
     {
         $this->records = [
             [
-                'barcode' => 'Lorem ipsu',
+                'barcode' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
                 'image' => 'Lorem ipsum dolor sit amet',
                 'quantity' => 1,
-                'adddate' => 1662423088,
+                'adddate' => 1661794857,
                 'description' => 'Lorem ipsum dolor sit amet',
             ],
         ];

@@ -38,7 +38,7 @@ class TicketTable extends Table
         parent::initialize($config);
 
         $this->setTable('ticket');
-        $this->setDisplayField('name');
+        $this->setDisplayField('id');
         $this->setPrimaryKey('id');
     }
 }

@@ -203,22 +203,22 @@ public function deleteManyRestock()
             // restock found
             $change = array();
             foreach ($restock as $stock) {
-                $articles = $articleTable->find()->where(['barcode'=>$stock->barcode])->first();
+                $articles = $articleTable->get($stock->barcode);
                 if(!empty($articles)){
                     $articles->quantity = $articles->quantity - $stock->quantity;
                     $change[] = $articles->toArray();
-					if ($articles->quantity < 0) {
-						$status = false;
-						$message = "This restock can't be deleted";
-						$this->set([
-							"status" => $status,
-							"message" => $message
-						]);
+                }
+                if ($articles->quantity < 0) {
+                    $status = false;
+                    $message = "This restock can't be deleted";
+                    $this->set([
+                        "status" => $status,
+                        "message" => $message
+                    ]);
 
-						$this->viewBuilder()->setOption("serialize", ["status", "message"]);
-						return;
-					}
-				}
+                    $this->viewBuilder()->setOption("serialize", ["status", "message"]);
+                    return;
+                }
             }
             $var=$articleTable->find();
             $articles = $articleTable->patchEntities($var,$change);
