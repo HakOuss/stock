@@ -32,7 +32,7 @@ class ArticleController extends AppController
             "barcode" => $formData['barcode']
         ])->first();
         $imageData = $this->request->getData('image');
-        if (!isset($imageData) || $imageData->getClientFilename() == 'default.png') {
+        if (!isset($imageData) || $imageData == 'default.png') {
             $formData["image"] = "default.png";
         } elseif (empty($artData)) {
             $error = $imageData->getError();

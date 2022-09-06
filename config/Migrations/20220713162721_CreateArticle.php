@@ -10,7 +10,7 @@ class CreateArticle extends AbstractMigration
         $table = $this->table('article' ,['id' => false]);
 
         // barcode
-        $table->addColumn("barcode", "biginteger", [
+        $table->addColumn("barcode", "string", [
             "limit" => 12
         ]);
         // name
