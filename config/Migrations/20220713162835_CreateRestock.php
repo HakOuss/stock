@@ -21,7 +21,7 @@ class CreateRestock extends AbstractMigration
             "null" => false 
         ]);
         // barcode
-        $table->addColumn("barcode", "biginteger", [
+        $table->addColumn("barcode", "string", [
             "limit" => 12
         ]);
         //name

@@ -27,11 +27,11 @@ class TicketFixture extends TestFixture
             [
                 'id' => 1,
                 'ticketid' => 'Lorem ipsum dolor sit amet',
-                'barcode' => 1,
+                'barcode' => 'Lorem ipsu',
                 'name' => 'Lorem ipsum dolor sit amet',
                 'unitprice' => 1,
                 'quantity' => 1,
-                'date' => 1662428938,
+                'date' => 1662490711,
             ],
         ];
         parent::init();

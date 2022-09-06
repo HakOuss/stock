@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $ticketid
- * @property int $barcode
+ * @property string $barcode
  * @property string $name
  * @property float $unitprice
  * @property int $quantity

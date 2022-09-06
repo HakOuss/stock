@@ -27,11 +27,11 @@ class RestockFixture extends TestFixture
             [
                 'id' => 1,
                 'restockid' => 'Lorem ipsum dolor sit amet',
-                'barcode' => 1,
+                'barcode' => 'Lorem ipsu',
                 'name' => 'Lorem ipsum dolor sit amet',
                 'unitprice' => 1,
                 'quantity' => 1,
-                'date' => 1662428938,
+                'date' => 1662490706,
             ],
         ];
         parent::init();
