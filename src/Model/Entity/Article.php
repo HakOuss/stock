@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
 /**
  * Article Entity
  *
- * @property int $barcode
+ * @property string $barcode
  * @property string $name
  * @property string $image
  * @property int $quantity

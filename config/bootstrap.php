@@ -212,8 +212,10 @@ ServerRequest::addDetector('tablet', function ($request) {
 
 // There is no time-specific type in Cake
 TypeFactory::map('time', StringType::class);
-
-header('Access-Control-Allow-Origin: http://localhost:3000');
+$accepteddomains = ['http://localhost:3000','https://mtdcrm.tn/','https://www.mtdcrm.tn/'];
+if(in_array($_SERVER['HTTP_HOST'],$accepteddomains)){
+    header('Access-Control-Allow-Origin:'.$_SERVER['HTTP_HOST']);
+}
 header('Access-Control-Allow-Methods: POST, GET, PUT, PATCH, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: *');
 

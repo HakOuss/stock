@@ -235,6 +235,9 @@ class ArticleController extends AppController
             // article found
             if ($this->Article->delete($article)) {
                 // article deleted
+                if($article->image != 'default.png'){
+                    
+                }
                 $status = true;
                 $message = "Article has been deleted";
             } else {

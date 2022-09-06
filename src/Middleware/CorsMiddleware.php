@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
@@ -11,26 +12,27 @@ class CorsMiddleware implements MiddlewareInterface
     public function process(
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
-    ): ResponseInterface
-    {
+    ): ResponseInterface {
         $response = $handler->handle($request);
         $response = $this->setHeaders($request, $response);
-    
+
         return $response;
     }
-    
-    
+
+
     public function setHeaders(
         ServerRequestInterface $request,
         ResponseInterface $response
-    ): ResponseInterface
-    {
+    ): ResponseInterface {
         // Calling $handler->handle() delegates control to the *next* middleware
         // In your application's queue.
         //$response = $handler->handle($request);
 
         if ($request->getHeader('Origin')) {
-            header('Access-Control-Allow-Origin: http://localhost:3000');
+            $accepteddomains = ['http://localhost:3000', 'https://mtdcrm.tn/', 'https://www.mtdcrm.tn/'];
+            if (in_array($_SERVER['HTTP_HOST'], $accepteddomains)) {
+                header('Access-Control-Allow-Origin:' . $_SERVER['HTTP_HOST']);
+            }
             header('Access-Control-Allow-Methods: POST, GET, PUT, PATCH, DELETE, OPTIONS');
             header('Access-Control-Allow-Headers: *');
 

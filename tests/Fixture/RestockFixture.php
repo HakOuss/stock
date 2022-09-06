@@ -31,7 +31,7 @@ class RestockFixture extends TestFixture
                 'name' => 'Lorem ipsum dolor sit amet',
                 'unitprice' => 1,
                 'quantity' => 1,
-                'date' => 1661794857,
+                'date' => 1662426460,
             ],
         ];
         parent::init();
