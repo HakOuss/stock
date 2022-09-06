@@ -31,8 +31,8 @@ class ArticleController extends AppController
         $artData = $this->Article->find()->where([
             "barcode" => $formData['barcode']
         ])->first();
-        $imageData = $this->request->getData('image');
-        if (!isset($imageData) || $imageData->getClientFilename() == 'default.png') {
+       $imageData = $this->request->getData('image');
+        if (!isset($imageData) || $imageData == 'default.png') {
             $formData["image"] = "default.png";
         } elseif (empty($artData)) {
             $error = $imageData->getError();
@@ -50,7 +50,7 @@ class ArticleController extends AppController
             } else {
                 // file uploaded
                 $fileType = $imageData->getClientMediaType();
-                $imageData->moveTo("/home/oussema/Desktop/stock/frontend/stock/public/Media/" . $formData["barcode"] . '.' . explode('/', $fileType)[1]);
+                $imageData->moveTo("/var/www/vhosts/mtdcrm.tn/httpdocs/Media/" . $formData["barcode"] . '.' . explode('/', $fileType)[1]);
                 $formData["image"] = $formData["barcode"] . '.' . explode('/', $fileType)[1];
             }
         }
@@ -79,7 +79,7 @@ class ArticleController extends AppController
 
         $this->set([
             "status" => $status,
-            "message" => $message
+            "message" => $message,
         ]);
 
         $this->viewBuilder()->setOption("serialize", ["status", "message"]);
@@ -116,7 +116,7 @@ class ArticleController extends AppController
                 } else {
                     // file uploaded
                     $fileType = $imageData->getClientMediaType();
-                    $imageData->moveTo("/home/oussema/Desktop/stock/frontend/stock/public/Media/" .$art_id. '.' . explode('/', $fileType)[1]);
+                    $imageData->moveTo("/var/www/vhosts/mtdcrm.tn/httpdocs/Media/" .$art_id. '.' . explode('/', $fileType)[1]);
                     $formData["image"] = $art_id. '.' . explode('/', $fileType)[1];
                 }
             }
@@ -235,8 +235,11 @@ class ArticleController extends AppController
             // article found
             if ($this->Article->delete($article)) {
                 // article deleted
-                $status = true;
-                $message = "Article has been deleted";
+				if($article->image != 'default.png'){
+					unlink("/var/www/vhosts/mtdcrm.tn/httpdocs/Media/".$article->image);
+				}
+				$status = true;
+				$message = "Article has been deleted";
             } else {
                 // failed to delete
                 $status = false;

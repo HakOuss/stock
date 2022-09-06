@@ -38,7 +38,7 @@ class RestockTable extends Table
         parent::initialize($config);
 
         $this->setTable('restock');
-        $this->setDisplayField('id');
+        $this->setDisplayField('name');
         $this->setPrimaryKey('id');
     }
 }

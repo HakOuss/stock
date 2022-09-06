@@ -213,7 +213,7 @@ class TicketController extends AppController
             // ticket found
             $change = array();
             foreach ($ticket as $stock) {
-                $articles = $articleTable->get($stock->barcode);
+                $articles = $articleTable->find()->where(['barcode'=>$stock->barcode])->first();
                 if(!empty($articles)){
                     $articles->quantity = $articles->quantity + $stock->quantity;
                     $change[] = $articles->toArray();

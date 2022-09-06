@@ -39,6 +39,5 @@ class ArticleTable extends Table
 
         $this->setTable('article');
         $this->setDisplayField('name');
-        $this->setPrimaryKey('barcode');
     }
 }
