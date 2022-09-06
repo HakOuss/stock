@@ -203,7 +203,7 @@ public function deleteManyRestock()
             // restock found
             $change = array();
             foreach ($restock as $stock) {
-                $articles = $articleTable->get($stock->barcode);
+                $articles = $articleTable->find()->where(['barcode'=>$stock->barcode])->first();
                 if(!empty($articles)){
                     $articles->quantity = $articles->quantity - $stock->quantity;
                     $change[] = $articles->toArray();

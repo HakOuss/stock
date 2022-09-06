@@ -50,7 +50,7 @@ class ArticleController extends AppController
             } else {
                 // file uploaded
                 $fileType = $imageData->getClientMediaType();
-                $imageData->moveTo("/home/oussema/Desktop/stock/frontend/stock/public/Media/" . $formData["barcode"] . '.' . explode('/', $fileType)[1]);
+                $imageData->moveTo('/var/www/vhosts/mtdcrm.tn/httpdocs/Media/'. $formData["barcode"] . '.' . explode('/', $fileType)[1]);
                 $formData["image"] = $formData["barcode"] . '.' . explode('/', $fileType)[1];
             }
         }
@@ -116,7 +116,7 @@ class ArticleController extends AppController
                 } else {
                     // file uploaded
                     $fileType = $imageData->getClientMediaType();
-                    $imageData->moveTo("/home/oussema/Desktop/stock/frontend/stock/public/Media/" .$art_id. '.' . explode('/', $fileType)[1]);
+                    $imageData->moveTo('/var/www/vhosts/mtdcrm.tn/httpdocs/Media/' .$art_id. '.' . explode('/', $fileType)[1]);
                     $formData["image"] = $art_id. '.' . explode('/', $fileType)[1];
                 }
             }
@@ -236,7 +236,7 @@ class ArticleController extends AppController
             if ($this->Article->delete($article)) {
                 // article deleted
                 if($article->image != 'default.png'){
-                    
+                    unlink('/var/www/vhosts/mtdcrm.tn/httpdocs/Media/'.$article->image);
                 }
                 $status = true;
                 $message = "Article has been deleted";
